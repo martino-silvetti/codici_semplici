@@ -1,0 +1,68 @@
+Vediamo come fare la diagonalizzazione di una matrice 3×3 simmetrica in Fortran usando gfortran e le librerie Intel MKL.
+
+    Anche con gfortran, possiamo usare le routine LAPACK di MKL, ad esempio dsyev, esattamente come fatto con ifort.
+
+✅ 1. Programma Fortran (uguale a prima)
+
+Il codice Fortran non cambia:
+
+program diagonalizzazione
+    implicit none
+    integer, parameter :: n = 3, lda = 3, lwork = 100
+    real*8 :: a(lda, n), w(n), work(lwork)
+    integer :: info
+
+    ! Matrice simmetrica 3x3
+    a = reshape([ &
+        2.0d0, -1.0d0,  0.0d0, &
+       -1.0d0,  2.0d0, -1.0d0, &
+        0.0d0, -1.0d0,  2.0d0], &
+        shape(a), order=[2,1])  ! Fortran column-major
+
+    call dsyev('V', 'U', n, a, lda, w, work, lwork, info)
+
+    if (info == 0) then
+        print *, 'Autovalori:'
+        print *, w
+        print *, 'Autovettori (colonne):'
+        print *, a
+    else
+        print *, 'Errore nella diagonalizzazione, info = ', info
+    end if
+end program
+
+✅ 2. Compilare con gfortran + MKL
+Opzione 1 – Facile (usando script Intel)
+
+Se hai installato Intel oneAPI:
+
+source /opt/intel/oneapi/setvars.sh  # imposta MKLROOT
+
+Poi compila con:
+
+gfortran diagonalizzazione.f90 -o diag \
+  -I${MKLROOT}/include \
+  -L${MKLROOT}/lib/intel64 \
+  -lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl
+
+
+
+
+✅ 3. Nota importante su gfortran
+
+Con gfortran, assicurati che:
+
+    Il tuo MKL sia installato correttamente (può convivere con gfortran, anche se è pensato per ifort).
+
+    Il compilatore Fortran sia compatibile con l'interfaccia C di MKL (di solito sì, per le routine standard come LAPACK).
+
+✅ 4. Esecuzione
+
+Dopo aver compilato:
+
+./diag
+
+Otterrai gli autovalori e autovettori della matrice simmetrica.
+
+Se vuoi un esempio con una matrice non simmetrica (quindi usando DGEEV) oppure vuoi farlo per matrici 
+
