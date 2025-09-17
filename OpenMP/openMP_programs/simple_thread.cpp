@@ -25,7 +25,7 @@ int main(){
 	std::cout << "Number of threads currently active" << omp_get_num_threads() << std::endl;
 	
 	// fork
-	#pragma omp parallel  
+	#pragma omp parallel  // parallel directive execute the block following in parallel 
 	{
 		
 		int NumberThreads = omp_get_num_threads() ;

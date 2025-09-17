@@ -34,10 +34,17 @@ int main(){
 	std::cout << p << std::endl; /*print the actual RAM address*/
 	std::cout << *p << std::endl; /*print the value the pointers is pointing at*/
 	std::cout << &a << std::endl; /*print directly the RAM address where a is stored*/
+	std::cout << p[0] << std::endl;
 
-	int** mat = first_derivative_operator(10);
+	//int** mat = first_derivative_operator(10);
+	
+	std::cout << "----------------" << std::endl;
+	std::cout << "arrays are created as pointers " << std::endl;
+	int*vec = new int[10];
+	std::cout << "printing an array gives only the address, i.e. the pointer itself: vec = " << vec << std::endl;	
+	std::cout << "printing the particular entry of the pointer dereferenciate it like with the & symbol: vec[0] = " << vec[0] << std::endl;	
 	
 	
-	std::cout << mat[0][0] << std::endl;
+	//std::cout << mat[0][0] << std::endl;
 		
 	}
