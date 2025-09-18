@@ -1,3 +1,6 @@
+### make it easy, clear and clean first, make it work later!!
+### the programmer should make the code easy for both the user and the newbie developer 
+
 general repository of DFT code
 1)Create a working parser
 2)Decide the user interface (input files, automatic imput files to be created like yambo, interface with python??)
