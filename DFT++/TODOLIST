@@ -1,0 +1,23 @@
+general repository of DFT code
+1)Create a working parser
+2)Decide the user interface (input files, automatic imput files to be created like yambo, interface with python??)
+3)Read wavefunction files
+
+Also:
+1)Start from parser and details rather than core routines, 
+make it easy, clear and clean first, make it work later!!
+2)Integrate a symmetry analysis library
+3)Write doc during coding on-the-fly, COMMENT EVERYTHING
+
+Coding conventions:
+1)Structure everything to fit in a "Workflow" class
+2)Implement Rust-like safety measures
+3)No Fortran except for linear algebra libs
+4)iterators always start with idx_ followed by the name in PascalCase
+4bis)Use long and explicative names for variables in snake_case or PascalCase
+4ter) use camelCase only for classes, structs and unions
+4quater) critical variables concerning exclusively parallelization and GPU porting can be in CAPS_LOCK 
+5)Keep track of input and output types
+6)No namespaces ?
+7)code shall be in english, no functions like "errore" in QE
+7bis) critical comments can be translated in any language
