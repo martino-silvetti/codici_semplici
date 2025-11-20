@@ -11,6 +11,8 @@ Also:
 make it easy, clear and clean first, make it work later!!
 2)Integrate a symmetry analysis library
 3)Write doc during coding on-the-fly, COMMENT EVERYTHING
+4)Do not use void pointers. Use recasting into primitive or derived types
+5)No methods in structs, use classes instead.  
 
 Coding conventions:
 1)Structure everything to fit in a "Workflow" class
