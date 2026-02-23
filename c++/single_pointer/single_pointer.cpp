@@ -34,7 +34,7 @@ int main(){
 	std::cout << p << std::endl; /*print the actual RAM address*/
 	std::cout << *p << std::endl; /*print the value the pointers is pointing at*/
 	std::cout << &a << std::endl; /*print directly the RAM address where a is stored*/
-	std::cout << p[0] << std::endl;
+	std::cout << p[0] << std::endl; /*the index of a pointer is similar to dereferencing it*/
 
 	//int** mat = first_derivative_operator(10);
 	
