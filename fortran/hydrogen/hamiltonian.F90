@@ -25,8 +25,13 @@ contains
 		call buildLocalExtPot(rGrid, nuclearPot)
 		call buildKineticTermDiagonal(rGrid, kineticTermDiagonal)
 		call buildAngularMomentumPot(rGrid, l, angularMomPot)
+
 		
 		Hdiagonal = kineticTermDiagonal + angularMomPot + nuclearPot 
+
+        deallocate(nuclearPot)
+        deallocate(kineticTermDiagonal)
+        deallocate(angularMomPot)
 		
 	end subroutine buildHamiltDiagonal
 

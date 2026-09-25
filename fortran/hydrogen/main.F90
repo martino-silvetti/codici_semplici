@@ -34,13 +34,13 @@ call buildHamiltDiagonal(radialGrid, l, diagHamilt)
 call buildHamiltUpperDiagonal(radialGrid, upperHamilt)
 call buildHamiltLowerDiagonal(radialGrid, lowerHamilt)
 
-
+write(*,*) dp
 write(*,*) "radiaGrid" , radialGrid , " size " , size(radialGrid)
 write(*,*) "diagHamilt" , diagHamilt , " size " , size(diagHamilt)
 write(*,*) "upperHamilt" , upperHamilt, " size " , size(upperHamilt)
 write(*,*) "lowerHamilt" , lowerHamilt, " size " , size(lowerHamilt)
 !diagonalize
-call dstev('N', samplingN , diagHamilt, upperHamilt , dummyEigVec , 1, info)
+call dstev('N', samplingN , diagHamilt, upperHamilt , dummyEigVec , 1., info)
 
 deallocate(diagHamilt)
 deallocate(upperHamilt)
